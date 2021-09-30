@@ -1,1 +1,98 @@
 
+26.22 Summary
+=====================
+
+TXOP Duration-Based RTS/CTS
+---------------------------------------
+
+AP 使用 RTS/CTS 方式有两种:
+
+ - TXOP duration-based
+ - PSDU length based
+
+AP 侧使能/禁止 TXOP Duration-Based RTS/CTS 
+
+ - 使能: HE operation IE 中将 TXOP Duration-Based RTS/CTS Threshold 设置为 0~1022
+ - 禁止：设置为 1023
+ - 不变：在 beacon/probe response 中设置为 0
+
+STA 侧使能/禁止 TXOP Duration-Based RTS/CTS
+
+ - 依据 AP HE Operation IE 中的值设置
+
+下述条件同时满足情况下 STA 必须使用 RTS/CTS 试启动 TXOP:
+
+ - STA 想发送单播
+ - TXOP Duration 超 32us x dot11TXOPDurationRTSThreshold
+
+否则按 wifi-6 之前的方式处理。
+
+Intra-BSS 与 Inter-BSS PPDU 分类
+------------------------------------
+
+Inter-BSS PPDU
+
+ - 收到的 color 与关联 AP color 不同
+ - 收到的 VHT PPDU PARTIAL_AID 与关联 AP 的 BSSID, 或者多 BSSID AP 中任何一个 AID均不同
+ - 收到的 VHT PPDU 为组播，且　PARTIAL_AID　．．．
+ - AP 收到了下行 PPDU
+ - PPDU 有 BSSID, 但是 BSSID 不是关联 AP 的 bssid, 也不是多 bssid AP 中任何一个 bssid
+ - PPDU 无 bssid, 但 RA/TA 不是是关联 AP 的 bssid, 也不是多 bssid AP 中任何一个 bssid
+
+Intra-BSS PPDU
+
+ - 收到的 color 与关联 AP color 相同
+ - 收到的 VHT PPDU PARTIAL_AID 与多 BSSID AP 中某一个 AID 相同
+ - 收到的 VHT PPDU 为组播，且　PARTIAL_AID　．．．
+ - AP 收到了下行 PPDU
+ - PPDU 中 BSSID/RA/TA, 与关联 AP 的 bssid, 或者多 bssid AP 中某一个 bssid 相同
+ - PPDU 无 TA, 但 RA 与保存的 TXOP Holder 地址相同
+
+分类冲突：
+
+ - 如果依据 MAC 规则，PPDU 同时属于 Intra-BSS/Inter-BSS 时，则分类为 Intra-BSS。
+ - MAC 规则优先级高于 color 规则
+
+SRG　PPDU
+－－－－－－－－－－－－－－－－－－－－
+
+STA　通过　AP 下发的 SRG 参数判断
+
+TODO
+
+
+两个 NAV
+------------------------
+
+STA 必须维护两个 NAV, AP 可能维护两个 NAV：
+
+ - base NAV: 收到 inter-ppdu 或者无法分类的 ppdu 时更新
+ - intra-bss nav: 收到 intra-ppdu 时更新
+
+举例： STA 的 basic NAV 为 0 时，收到 AP 发过来的 Trigger 帧不会回复。
+
+更新 Base NAV 条件：
+
+ - 收到 Inter-BSS 帧，或无法分类帧。 且
+ - Duration 比当前大， 用
+ - RA 不为 STA MAC
+
+更新 Intr-bss NAV 条件：
+
+ - 收到 intra-bss PPDU， 且
+ - Duration 比当前值大， 且
+ - RA 不为 STA MAC； 或 STA 不为 TXOP Holder 且 PPDU 未包含要求立即回复的帧；或 STA 不为 TXOP Holder 且收到 Trigger 帧。
+
+==> TXOP 的 NAV 设置 (TODO)
+
+下述条件满足时，CCA 要 Reset:
+
+ - 一个 NAV reset, 另一个为 0
+ - 两个 NAV reset
+
+TXOP Truncation
+-----------------------
+
+MU-RTS/CTS 流程
+-----------------------
+
