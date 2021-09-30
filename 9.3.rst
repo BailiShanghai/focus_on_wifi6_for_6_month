@@ -1,0 +1,5 @@
+Trigger 帧
+=====================
+
+Trigger 帧用于进行 HT TB PPDU 传输，
+
