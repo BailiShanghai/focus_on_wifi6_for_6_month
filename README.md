@@ -21,7 +21,7 @@ Anyway, 目前有一万个理由要复习与学习一下这块内容。
 
 ## 整体时间安排
 
-Track 6 month wifi6 learning:
+安排:
 
  - 3 months for 802.11-2021
  - 3 months for source code
