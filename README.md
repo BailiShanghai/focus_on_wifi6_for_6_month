@@ -88,6 +88,6 @@ Track 6 month wifi6 learning:
 | Coexist | 2/w3 | | 0% |
 
 
-# 三个月 802.11-2020 标准阅读详细计划
+# 三个月 802.11-2020 阅读详细计划
 
 TBC
