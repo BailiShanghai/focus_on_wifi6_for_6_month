@@ -1,10 +1,43 @@
-# wlearn_2021
+# 专注 WiFi-6 标准/代码 6 个月!
+
+## 为什么有这个计划？
+
+原因：
+
+ - 在 LX 最后两年基本耗在客户身上，90% 工作与 WiFi 无关， 进 BK 之后，95% 工作与 WiFi 无关
+ - 以前掌握的 WiFi 知识 80% 以上已遗忘， 而新的 WiFi-6 知识约等于 0，个人已积累了较强的学习欲望
+ - BK 与 LX 的 WiFi 实现完全不同
+ - ***可预见的未来工作内容要求掌握 WiFi，尤其是某些痛点问题***
+
+Anyway, 目前有一万个理由要复习与学习一下这块内容。
+
+## 计划目标
+
+目标：
+
+ - 掌握 WiFi-6 MAC
+ - 了解 WiFi-6 PHY
+ - 了解 WiFi-6 DataPath
+
+
+## 整体时间安排
+
 Track 6 month wifi6 learning:
 
  - 3 months for 802.11-2021
  - 3 months for source code
+ - 
+## 每周时间安排
 
-# 3-months 802.11-2021 read plan
+利用***碎片***时间， 在***不影响工作***情况下执行计划，具体安排如下：
+
+ - 早上 8:00 前 30 分钟
+ - 晚上 8:00 后 0~20 分钟
+ - 周六/日各 60 分钟
+
+合计每周安排 270 ~ 370 分钟用于本计划, ***时间不在多，贵在坚持， 贵在学习效率，更在于专注***。
+
+## 三个月 802.11-2021 阅读详细计划
 
 | chapter | Plan | Actual | Status |
 -|-|-|-|
@@ -38,7 +71,7 @@ Track 6 month wifi6 learning:
 | 27.5 | 1/w4 |  | 0%|
 | 26.6 | 1/w4 |  | 0%|
 
-# 3-months code read plan
+## 三个月代码阅读详细计划
 
 | Topic | Plan | Actual | Status|
 -|-|-|-|
@@ -55,6 +88,6 @@ Track 6 month wifi6 learning:
 | Coexist | 2/w3 | | 0% |
 
 
-# 3-months 802.11-2020 read plan
+# 三个月 802.11-2020 标准阅读详细计划
 
 TBC
